@@ -1,0 +1,9 @@
+## Interface: 30300
+
+## Title: |cffff8800y|rClassColors
+## Note: Colorize name by class!
+## Author: yleaf
+## Version: 2.0.4
+## OptionalDeps: !ClassColors
+
+yClassColors.lua
