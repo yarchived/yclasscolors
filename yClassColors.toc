@@ -1,11 +1,17 @@
-## Interface: 30300
-## X-Compatible-With: 40000
+## Interface: 40000
 
 ## Title: |cffff8800y|rClassColors
 ## Note: Colorize name by class!
 ## Author: yleaf
-## Version: 2.1
+## Version: 2.2
 ## OptionalDeps: !ClassColors
 
-yClassColors.lua
+core.lua
+
+
+battlefield.lua
+friends.lua
+guild.lua
+lfr.lua
+who.lua
 
