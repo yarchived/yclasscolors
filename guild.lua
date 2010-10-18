@@ -21,13 +21,13 @@ local function update()
             if(_VIEW == 'playerStatus') then
                 button.string1:SetText(ns.diffColor[level] .. level)
                 if(not isMobile) then
-                    button.string2:SetText(ns.classColorHex[classFileName] .. name)
+                    button.string2:SetText(ns.classColor[classFileName] .. name)
                 end
                 if(zone == playerArea) then
                     button.string3:SetText('|cff00ff00' .. zone)
                 end
             elseif(_VIEW == 'guildStatus') then
-                button.string1:SetText(ns.classColorHex[classFileName] .. name)
+                button.string1:SetText(ns.classColor[classFileName] .. name)
                 if(rankIndex and rank) then
                     button.string2:SetText(ns.guildRankColor[rankIndex] .. rank)
                 end
