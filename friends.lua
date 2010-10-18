@@ -19,7 +19,7 @@ local function friendsFrame()
             if ( button.buttonType == FRIENDS_BUTTON_TYPE_WOW ) then
                 local name, level, class, area, connected, status, note = GetFriendInfo(button.id)
                 if(connected) then
-                    nameText = ns.classColorHex[class] .. name.."|r, "..format(FRIENDS_LEVEL_TEMPLATE, ns.diffColor[level] .. level .. '|r', class)
+                    nameText = ns.classColor[class] .. name.."|r, "..format(FRIENDS_LEVEL_TEMPLATE, ns.diffColor[level] .. level .. '|r', class)
                     if(areaName == playerArea) then
                         infoText = format('|cff00ff00%s|r', area)
                     end
@@ -29,7 +29,7 @@ local function friendsFrame()
                 if(isOnline and client==BNET_CLIENT_WOW) then
                     local hasFocus, toonName, client, realmName, faction, race, class, guild, zoneName, level, gameText, broadcastText, broadcastTime = BNGetToonInfo(toonID)
                     if(givenName and surname and toonName) then
-                        if(enable_friendslist_wowcrossrealmfriend or CanCooperateWithToon(toonID)) then
+                        if CanCooperateWithToon(toonID) then
                             nameText = format(BATTLENET_NAME_FORMAT, givenName, surname) ..' '.. FRIENDS_WOW_NAME_COLOR_CODE .. '(' .. ns.classColorHex[class] .. toonName .. FRIENDS_WOW_NAME_COLOR_CODE .. ')'
                             if(zoneName == playerArea) then
                                 infoText = format('|cff00ff00%s|r', zoneName)

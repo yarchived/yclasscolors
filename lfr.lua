@@ -1,18 +1,15 @@
-if(1) then return end
 
-if(enable_lfrlist) then
-    hooksecurefunc('LFRBrowseFrameListButton_SetData', function(button, index)
-        local name, level, areaName, className, comment, partyMembers, status, class, encountersTotal, encountersComplete, isLeader, isTank, isHealer, isDamage = SearchLFGGetResults(index)
-        
-        local c = class and classColors[class]
-        if c then
-            button.name:SetTextColor(unpack(c))
-            button.class:SetTextColor(unpack(c))
-        end
-        if level then
-            button.level:SetText(diffColor[level] .. level)
-        end
-    end)
-end
+local parent, ns = ...
+local myName = UnitName'player'
+
+hooksecurefunc('LFRBrowseFrameListButton_SetData', function(button, index)
+    local name, level, areaName, className, comment, partyMembers, status, class, encountersTotal, encountersComplete, isLeader, isTank, isHealer, isDamage = SearchLFGGetResults(index)
+
+    if(index and class and name and level and (name~=myName)) then
+        button.name:SetText(ns.classColor[class] .. name)
+        button.class:SetText(ns.classColor[class] .. className)
+        button.level:SetText(ns.diffColor[level] .. level)
+    end
+end)
 
 

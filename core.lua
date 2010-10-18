@@ -75,7 +75,7 @@ ns.diffColor = setmetatable({}, {
 	end
 })
 
-ns.classColorHex = setmetatable({}, {
+ns.classColor = setmetatable({}, {
 	__index = function(t,i)
 		local c = i and RAID_CLASS_COLORS[BC[i] or i]
 		if not c then return '|cffffffff' end
@@ -84,12 +84,11 @@ ns.classColorHex = setmetatable({}, {
 	end
 })
 
-ns.classColors = ns.classColorHex
 
 if CUSTOM_CLASS_COLORS then
 	local function callBack()
 		wipe(classColorHex)
-		wipe(classColors)
+		wipe(classColor)
 	end
 	CUSTOM_CLASS_COLORS:RegisterCallback(callBack)
 end

@@ -34,7 +34,7 @@ local function update()
             elseif(_VIEW == 'achievement') then
                 button.string1:SetText(ns.diffColor[level] .. level)
                 if(classFileName and name) then
-                    button.string2:SetText(ns.classColors[classFileName] .. name)
+                    button.string2:SetText(ns.classColor[classFileName] .. name)
                 end
             end
         end
@@ -56,7 +56,7 @@ local function tradeupdate()
     end
 end
 
-local loaded = true
+local loaded = false
 hooksecurefunc('GuildFrame_LoadUI', function()
     if(loaded) then return end
     loaded = true
