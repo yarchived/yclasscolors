@@ -56,7 +56,11 @@ local function tradeupdate()
     end
 end
 
+local loaded = true
 hooksecurefunc('GuildFrame_LoadUI', function()
+    if(loaded) then return end
+    loaded = true
+
     hooksecurefunc('GuildRoster_SetView', viewChanged)
     hooksecurefunc('GuildRoster_Update', update)
     hooksecurefunc(GuildRosterContainer, 'update', update)
