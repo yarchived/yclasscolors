@@ -87,7 +87,6 @@ ns.classColor = setmetatable({}, {
 
 if CUSTOM_CLASS_COLORS then
 	local function callBack()
-		wipe(classColorHex)
 		wipe(classColor)
 	end
 	CUSTOM_CLASS_COLORS:RegisterCallback(callBack)
