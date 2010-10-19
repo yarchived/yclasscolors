@@ -30,7 +30,7 @@ local function friendsFrame()
                     local hasFocus, toonName, client, realmName, faction, race, class, guild, zoneName, level, gameText, broadcastText, broadcastTime = BNGetToonInfo(toonID)
                     if(givenName and surname and toonName) then
                         if CanCooperateWithToon(toonID) then
-                            nameText = format(BATTLENET_NAME_FORMAT, givenName, surname) ..' '.. FRIENDS_WOW_NAME_COLOR_CODE .. '(' .. ns.classColorHex[class] .. toonName .. FRIENDS_WOW_NAME_COLOR_CODE .. ')'
+                            nameText = format(BATTLENET_NAME_FORMAT, givenName, surname) ..' '.. FRIENDS_WOW_NAME_COLOR_CODE .. '(' .. ns.classColor[class] .. toonName .. FRIENDS_WOW_NAME_COLOR_CODE .. ')'
                             if(zoneName == playerArea) then
                                 infoText = format('|cff00ff00%s|r', zoneName)
                             end
