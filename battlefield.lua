@@ -11,8 +11,10 @@ hooksecurefunc('WorldStateScoreFrame_Update', function()
         -- faction: Battlegrounds: Horde = 0, Alliance = 1 / Arenas: Green Team = 0, Yellow Team = 1
         if name then
             local n, r = strsplit('-', name, 2)
-            n = ns.classColor[classToken] .. n .. '|r'
-            if n == myname then
+            --print(name, n, r, class, classToken)
+            n = ns.classColor[class] .. n .. '|r'
+
+            if (n == myname) and (not r) then
                 n = '> ' .. n .. ' <'
             end
 
@@ -32,11 +34,13 @@ hooksecurefunc('WorldStateScoreFrame_Update', function()
                     end
                 end
                 r = color .. r .. '|r'
-                n = n .. '|cffffffff-|r' .. r
+                n = n .. '|cffffffff - |r' .. r
             end
 
-            local buttonNameText = getglobal('WorldStateScoreButton' .. i .. 'NameText')
-            buttonNameText:SetText(n)
+            local button = _G['WorldStateScoreButton' .. i]
+            button.name.text:SetText(n)
+--            local buttonNameText = getglobal('WorldStateScoreButton' .. i .. 'NameText')
+--            buttonNameText:SetText(n)
         end
     end
 end)
