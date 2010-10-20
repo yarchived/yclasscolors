@@ -69,11 +69,11 @@ ns.guildRankColor[0] = '|cffffffff'
 ns.diffColor = setmetatable({}, {
 	__index = function(t,i)
 		local c = i and GetQuestDifficultyColor(i)
-		if not c then return '|cffffffff' end
-		t[i] = Hex(c)
-		return t[i]
+        t[i] = c and Hex(c) or t[0]
+        return t[i]
 	end
 })
+ns.diffColor[0] = '|cffffffff'
 
 ns.classColor = setmetatable({}, {
 	__index = function(t,i)

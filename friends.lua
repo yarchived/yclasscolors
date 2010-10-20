@@ -12,7 +12,7 @@ local function friendsFrame()
     local playerArea = GetRealZoneText()
 
     for i = 1, #buttons do
-        local nameText, nameColor, infoText
+        local nameText, infoText
         button = buttons[i]
         index = offset + i
         if(button:IsShown()) then
@@ -28,12 +28,12 @@ local function friendsFrame()
                 local presenceID, givenName, surname, toonName, toonID, client, isOnline, lastOnline, isAFK, isDND, messageText, noteText = BNGetFriendInfo(button.id)
                 if(isOnline and client==BNET_CLIENT_WOW) then
                     local hasFocus, toonName, client, realmName, faction, race, class, guild, zoneName, level, gameText, broadcastText, broadcastTime = BNGetToonInfo(toonID)
-                    if(givenName and surname and toonName) then
-                        if CanCooperateWithToon(toonID) then
-                            nameText = format(BATTLENET_NAME_FORMAT, givenName, surname) ..' '.. FRIENDS_WOW_NAME_COLOR_CODE .. '(' .. ns.classColor[class] .. toonName .. FRIENDS_WOW_NAME_COLOR_CODE .. ')'
-                            if(zoneName == playerArea) then
-                                infoText = format('|cff00ff00%s|r', zoneName)
-                            end
+                    if(givenName and surname and toonName and class) then
+                        -- color them all
+                        --if CanCooperateWithToon(toonID) then
+                        nameText = format(BATTLENET_NAME_FORMAT, givenName, surname) ..' '.. FRIENDS_WOW_NAME_COLOR_CODE .. '(' .. ns.classColor[class] .. ns.classColor[class] .. toonName .. FRIENDS_WOW_NAME_COLOR_CODE .. ')'
+                        if(zoneName == playerArea) then
+                            infoText = format('|cff00ff00%s|r', zoneName)
                         end
                     end
                 end
@@ -42,9 +42,6 @@ local function friendsFrame()
 
         if(nameText) then
             button.name:SetText(nameText)
-        end
-        if(nameColor) then
-            button.name:SetTextColor(nameColor.r, nameColor.g, nameColor.b)
         end
         if(infoText) then
             button.info:SetText(infoText)
