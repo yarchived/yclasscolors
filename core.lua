@@ -19,6 +19,8 @@ end
 
 local RAID_CLASS_COLORS = CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS
 
+local WHITE_HEX = '|cffffffff'
+
 local function Hex(r, g, b)
 	if(type(r) == 'table') then
 		if(r.r) then r, g, b = r.r, r.g, r.b else r, g, b = unpack(r) end
@@ -64,7 +66,7 @@ ns.guildRankColor = setmetatable({}, {
 		end
 	end
 })
-ns.guildRankColor[0] = '|cffffffff'
+ns.guildRankColor[0] = WHITE_HEX
 
 ns.diffColor = setmetatable({}, {
 	__index = function(t,i)
@@ -73,17 +75,31 @@ ns.diffColor = setmetatable({}, {
         return t[i]
 	end
 })
-ns.diffColor[0] = '|cffffffff'
+ns.diffColor[0] = WHITE_HEX
 
 ns.classColor = setmetatable({}, {
 	__index = function(t,i)
 		local c = i and RAID_CLASS_COLORS[BC[i] or i]
-		if not c then return '|cffffffff' end
-		t[i] = Hex(c)
-		return t[i]
+        if(c) then
+            t[i] = Hex(c)
+            return t[i]
+        else
+            return WHITE_HEX
+        end
 	end
 })
 
+do
+    local WHITE = {1,1,1}
+    ns.classColorRaw = setmetatable({}, {
+        __index = function(t, i)
+            local c = i and RAID_CLASS_COLORS[BC[i] or i]
+            if not c then return WHITE end
+            t[i] = c
+            return c
+        end
+    })
+end
 
 if CUSTOM_CLASS_COLORS then
 	local function callBack()
