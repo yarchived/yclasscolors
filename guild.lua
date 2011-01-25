@@ -14,9 +14,8 @@ local function update()
     local buttons = GuildRosterContainer.buttons
 
     for i, button in ipairs(buttons) do
-        -- why the fuck no continue?
-        if(button:IsShown() and button.online and button.guildIndex) then
-            local name, rank, rankIndex, level, class, zone, note, officernote, online, status, classFileName, achievementPnts, achievementRank, isMobile = GetGuildRosterInfo(button.guildIndex)
+        local name, rank, rankIndex, level, class, zone, note, officernote, online, status, classFileName, achievementPnts, achievementRank, isMobile = GetGuildRosterInfo(button.guildIndex)
+        if(name and button:IsShown() and button.online and button.guildIndex) then
             --print(button.guildIndex, name, time())
             if(_VIEW == 'playerStatus') then
                 button.string1:SetText(ns.diffColor[level] .. level)
