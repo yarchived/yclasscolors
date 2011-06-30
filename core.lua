@@ -1,5 +1,7 @@
 
-local parent, ns = ...
+local _, ns = ...
+local ycc = {}
+ns.ycc = ycc
 
 local GUILD_INDEX_MAX = 12
 local SMOOTH = {
@@ -7,7 +9,7 @@ local SMOOTH = {
 	1, 1, 0,
 	0, 1, 0,
 }
-ns.myName = UnitName'player'
+ycc.myName = UnitName'player'
 
 local BC = {}
 for k, v in pairs(LOCALIZED_CLASS_NAMES_MALE) do
@@ -53,7 +55,7 @@ end
 
 --GuildControlGetNumRanks()
 --GuildControlGetRankName(index)
-ns.guildRankColor = setmetatable({}, {
+ycc.guildRankColor = setmetatable({}, {
 	__index = function(t, i)
 		if i then
 			local c = Hex(ColorGradient(i/GUILD_INDEX_MAX, unpack(SMOOTH)))
@@ -66,18 +68,18 @@ ns.guildRankColor = setmetatable({}, {
 		end
 	end
 })
-ns.guildRankColor[0] = WHITE_HEX
+ycc.guildRankColor[0] = WHITE_HEX
 
-ns.diffColor = setmetatable({}, {
+ycc.diffColor = setmetatable({}, {
 	__index = function(t,i)
 		local c = i and GetQuestDifficultyColor(i)
         t[i] = c and Hex(c) or t[0]
         return t[i]
 	end
 })
-ns.diffColor[0] = WHITE_HEX
+ycc.diffColor[0] = WHITE_HEX
 
-ns.classColor = setmetatable({}, {
+ycc.classColor = setmetatable({}, {
 	__index = function(t,i)
 		local c = i and RAID_CLASS_COLORS[BC[i] or i]
         if(c) then
@@ -91,7 +93,7 @@ ns.classColor = setmetatable({}, {
 
 do
     local WHITE = {1,1,1}
-    ns.classColorRaw = setmetatable({}, {
+    ycc.classColorRaw = setmetatable({}, {
         __index = function(t, i)
             local c = i and RAID_CLASS_COLORS[BC[i] or i]
             if not c then return WHITE end

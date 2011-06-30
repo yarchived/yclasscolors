@@ -1,13 +1,12 @@
-## Interface: 40000
+## Interface: 40200
 
 ## Title: |cffff8800y|rClassColors
 ## Note: Colorize name by class!
 ## Author: yleaf
-## Version: 2.1.4
+## Version: 2.2.0
 ## OptionalDeps: !ClassColors
 
 core.lua
-
 
 battlefield.lua
 friends.lua

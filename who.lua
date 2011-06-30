@@ -1,4 +1,5 @@
-local parent, ns = ...
+local _, ns = ...
+local ycc = ns.ycc
 
 hooksecurefunc('WhoList_Update', function()
     local whoOffset = FauxScrollFrame_GetOffset(WhoListScrollFrame)
@@ -27,9 +28,9 @@ hooksecurefunc('WhoList_Update', function()
             end
             local columnTable = { zone, guild, race }
 
-            local c = ns.classColorRaw[classFileName]
+            local c = ycc.classColorRaw[classFileName]
             nameText:SetTextColor(c.r, c.g, c.b)
-            levelText:SetText(ns.diffColor[level] .. level)
+            levelText:SetText(ycc.diffColor[level] .. level)
             variableText:SetText(columnTable[UIDropDownMenu_GetSelectedID(WhoFrameDropDown)])
         end
     end

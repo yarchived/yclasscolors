@@ -1,5 +1,6 @@
 
-local parent, ns = ...
+local _, ns = ...
+local ycc = ns.ycc
 
 local WHITE = {r = 1, g = 1, b = 1}
 local FRIENDS_LEVEL_TEMPLATE = FRIENDS_LEVEL_TEMPLATE:gsub('%%d', '%%s')
@@ -19,7 +20,7 @@ local function friendsFrame()
             if ( button.buttonType == FRIENDS_BUTTON_TYPE_WOW ) then
                 local name, level, class, area, connected, status, note = GetFriendInfo(button.id)
                 if(connected) then
-                    nameText = ns.classColor[class] .. name.."|r, "..format(FRIENDS_LEVEL_TEMPLATE, ns.diffColor[level] .. level .. '|r', class)
+                    nameText = ycc.classColor[class] .. name.."|r, "..format(FRIENDS_LEVEL_TEMPLATE, ycc.diffColor[level] .. level .. '|r', class)
                     if(areaName == playerArea) then
                         infoText = format('|cff00ff00%s|r', area)
                     end
@@ -27,11 +28,11 @@ local function friendsFrame()
             elseif (button.buttonType == FRIENDS_BUTTON_TYPE_BNET) then
                 local presenceID, givenName, surname, toonName, toonID, client, isOnline, lastOnline, isAFK, isDND, messageText, noteText = BNGetFriendInfo(button.id)
                 if(isOnline and client==BNET_CLIENT_WOW) then
-                    local hasFocus, toonName, client, realmName, faction, race, class, guild, zoneName, level, gameText, broadcastText, broadcastTime = BNGetToonInfo(toonID)
+                    local hasFocus, toonName, client, realmName, realmID, faction, race, class, guild, zoneName, level, gameText, broadcastText, broadcastTime = BNGetToonInfo(toonID)
                     if(givenName and surname and toonName and class) then
                         -- color them all
                         --if CanCooperateWithToon(toonID) then
-                        nameText = format(BATTLENET_NAME_FORMAT, givenName, surname) ..' '.. FRIENDS_WOW_NAME_COLOR_CODE .. '(' .. ns.classColor[class] .. ns.classColor[class] .. toonName .. FRIENDS_WOW_NAME_COLOR_CODE .. ')'
+                        nameText = format(BATTLENET_NAME_FORMAT, givenName, surname) ..' '.. FRIENDS_WOW_NAME_COLOR_CODE .. '(' .. ycc.classColor[class] .. ycc.classColor[class] .. toonName .. FRIENDS_WOW_NAME_COLOR_CODE .. ')'
                         if(zoneName == playerArea) then
                             infoText = format('|cff00ff00%s|r', zoneName)
                         end

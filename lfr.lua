@@ -1,14 +1,14 @@
 
-local parent, ns = ...
-local myName = UnitName'player'
+local _, ns = ...
+local ycc = ns.ycc
 
 hooksecurefunc('LFRBrowseFrameListButton_SetData', function(button, index)
     local name, level, areaName, className, comment, partyMembers, status, class, encountersTotal, encountersComplete, isLeader, isTank, isHealer, isDamage = SearchLFGGetResults(index)
 
-    if(index and class and name and level and (name~=myName)) then
-        button.name:SetText(ns.classColor[class] .. name)
-        button.class:SetText(ns.classColor[class] .. className)
-        button.level:SetText(ns.diffColor[level] .. level)
+    if(index and class and name and level and (name~=ycc.myName)) then
+        button.name:SetText(ycc.classColor[class] .. name)
+        button.class:SetText(ycc.classColor[class] .. className)
+        button.level:SetText(ycc.diffColor[level] .. level)
     end
 end)
 
