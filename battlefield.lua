@@ -1,5 +1,5 @@
-local parent, ns = ...
-local myname = UnitName'player'
+local _, ns = ...
+local ycc = ns.ycc
 
 hooksecurefunc('WorldStateScoreFrame_Update', function()
     local inArena = IsActiveBattlefieldArena()
@@ -12,9 +12,9 @@ hooksecurefunc('WorldStateScoreFrame_Update', function()
         if name then
             local n, r = strsplit('-', name, 2)
             --print(name, n, r, class, classToken)
-            n = ns.classColor[class] .. n .. '|r'
+            n = ycc.classColor[class] .. n .. '|r'
 
-            if (n == myname) and (not r) then
+            if (n == ycc.myName) and (not r) then
                 n = '> ' .. n .. ' <'
             end
 
