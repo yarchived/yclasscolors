@@ -3,7 +3,7 @@
 ## Title: |cffff8800y|rClassColors
 ## Note: Colorize name by class!
 ## Author: yleaf
-## Version: 40200.2
+## Version: 40200.3
 ## OptionalDeps: !ClassColors
 
 core.lua
