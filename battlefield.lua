@@ -11,14 +11,13 @@ hooksecurefunc('WorldStateScoreFrame_Update', function()
         -- faction: Battlegrounds: Horde = 0, Alliance = 1 / Arenas: Green Team = 0, Yellow Team = 1
         if name then
             local n, r = strsplit('-', name, 2)
-            --print(name, n, r, class, classToken)
             n = ycc.classColor[class] .. n .. '|r'
 
-            if (n == ycc.myName) and (not r) then
+            if(name == ycc.myName) then
                 n = '> ' .. n .. ' <'
             end
 
-            if r then
+            if(r) then
                 local color
                 if inArena then
                     if faction == 1 then
