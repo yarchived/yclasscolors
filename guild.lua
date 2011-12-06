@@ -2,15 +2,11 @@
 local _, ns = ...
 local ycc = ns.ycc
 
-local _VIEW_DEFAULT = 'playerStatus'
-local _VIEW = _VIEW_DEFAULT
-
-local function viewChanged(view)
-    _VIEW = view or _VIEW_DEFAULT
-end
 
 local function update()
-    if(_VIEW == 'tradeskil') then return end
+    local _VIEW = GetCVar'guildRosterView'
+
+    if(_VIEW == 'tradeskill') then return end
 
     local playerArea = GetRealZoneText()
     local buttons = GuildRosterContainer.buttons
@@ -68,7 +64,6 @@ hooksecurefunc('GuildFrame_LoadUI', function()
     if(loaded) then return end
     loaded = true
 
-    hooksecurefunc('GuildRoster_SetView', viewChanged)
     hooksecurefunc('GuildRoster_Update', update)
     hooksecurefunc(GuildRosterContainer, 'update', update)
     hooksecurefunc('GuildRoster_UpdateTradeSkills', tradeupdate)
