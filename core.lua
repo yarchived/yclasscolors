@@ -104,9 +104,6 @@ do
 end
 
 if CUSTOM_CLASS_COLORS then
-	local function callBack()
-		wipe(classColor)
-	end
-	CUSTOM_CLASS_COLORS:RegisterCallback(callBack)
+	CUSTOM_CLASS_COLORS:RegisterCallback(function() wipe(classColor) end)
 end
 
