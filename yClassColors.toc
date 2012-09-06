@@ -1,9 +1,9 @@
-## Interface: 40300
+## Interface: 50001
 
 ## Title: |cffff8800y|rClassColors
 ## Note: Colorize name by class!
 ## Author: yleaf
-## Version: 40300.3
+## Version: @project-version@
 ## OptionalDeps: !ClassColors
 
 core.lua
