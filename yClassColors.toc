@@ -1,6 +1,6 @@
-## Interface: 50001
+## Interface: 50200
 
-## Title: |cffff8800y|rClassColors
+## Title: yClassColors
 ## Note: Colorize name by class!
 ## Author: yleaf
 ## Version: @project-version@
